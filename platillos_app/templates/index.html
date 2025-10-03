@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Negocio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .platillo {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .platillo:last-child {
+            border-bottom: none;
+        }
+        .platillo h2 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .platillo p {
+            color: #555;
+            margin: 5px 0;
+        }
+        .platillo .precio {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nuestro Menú - Empresa de Herlinda Sanchez</h1>
+        {% if platillos %}
+            {% for platillo in platillos %}
+                <div class="platillo">
+                    <h2>{{ platillo.nombre }}</h2>
+                    <p class="precio">Precio: ${{ platillo.precio|floatformat:2 }}</p>
+                    <p>{{ platillo.descripcion }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No hay platillos disponibles en este momento.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
